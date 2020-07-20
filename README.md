@@ -323,7 +323,7 @@ function Greeting() {
     const name = event.target.elements.name.value
     fetchGreeting(name).then(
       newGreeting => setGreeting(newGreeting),
-      handleError,
+      error => handleError(error),
     )
   }
 
@@ -333,24 +333,10 @@ function Greeting() {
     <form onSubmit={handleSubmit}>
       <label>Name</label>
       <input id="name" />
-      <button type="submit" onClick={handleClick}>
+      <button type="submit">
         get a greeting
       </button>
     </form>
-  )
-}
-```
-
-> Note, in case it's not clear what's happening here, you could also write
-> `handleClick` like this:
-
-```javascript
-function handleSubmit(event) {
-  event.preventDefault()
-  const name = event.target.elements.name.value
-  fetchGreeting(name).then(
-    newGreeting => setGreeting(newGreeting),
-    error => handleError(error),
   )
 }
 ```
@@ -375,7 +361,7 @@ function Greeting() {
     <form onSubmit={handleSubmit}>
       <label>Name</label>
       <input id="name" />
-      <button type="submit" onClick={handleClick}>
+      <button type="submit">
         get a greeting
       </button>
     </form>
